@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
+import java.time.Duration;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -25,9 +26,13 @@ public class ProductoService {
     );
 
     private final ProductoRepository repository;
+    private final AgroSmartAIService aiService;
 
-    public ProductoService(ProductoRepository repository) {
+    public ProductoService(
+            ProductoRepository repository,
+            AgroSmartAIService aiService) {
         this.repository = repository;
+        this.aiService = aiService;
     }
 
     public Flux<Producto> obtenerProductosComercializables() {
@@ -73,6 +78,27 @@ public class ProductoService {
                 // Un Mono vacío se convierte en un error controlado.
                 .switchIfEmpty(Mono.error(
                         new ProductoNoEncontradoException(id)
+                ));
+    }
+
+    public Mono<String> generarPublicidad(
+        String producto,
+        String audiencia) {
+
+        return Mono.fromCallable(
+                        () -> aiService.generarPublicidad(producto, audiencia)
+                )
+                // La llamada HTTP al proveedor de IA es bloqueante.
+                .subscribeOn(Schedulers.boundedElastic())
+
+                // Evita mantener la petición esperando indefinidamente.
+                .timeout(Duration.ofSeconds(30))
+
+                // Un fallo externo produce una respuesta controlada.
+                .onErrorResume(error -> Mono.just(
+                        "Publicidad no disponible en este momento ("
+                                + error.getClass().getSimpleName()
+                                + ")"
                 ));
     }
 }
