@@ -3,14 +3,12 @@
 > ⏱️ Este archivo debe ir en tu **primer commit**, hecho **antes de que termine la sesión
 > sincrónica** del examen. Toma menos de 5 minutos y es lo único con horario fijo:
 > después trabajas a tu ritmo hasta el plazo del día siguiente.
->
-> Completa **todos** los campos. El código del examen ya viene escrito: no lo cambies.
 
-- **Nombre completo:**
-- **Cédula:**
-- **NRC:**
-- **Código del examen:** `AGSK-2026`
-- **Fecha y hora de inicio:**      <!-- formato: 2026-XX-XX HH:MM -->
+- **Nombre completo:** Katherine Elizabeth Vargas Medina
+- **Cédula:** 1725531956
+- **NRC:** 30405
+- **Nonce del examen:** AGS-XXXX-2026
+- **Fecha y hora de inicio:** 31/07/2026 19:15
 
 ---
 
@@ -21,11 +19,11 @@ se busca en una tabla.
 
 | # | Parámetro | Cómo se obtiene | Mi valor |
 |:---:|-----------|-----------------|----------|
-| — | `NN` | los 2 últimos dígitos de mi cédula | |
-| 1 | Nombre de la tabla | `tbl_productos_base_` + `NN` | |
-| 2 | Puerto | `81` + `NN` | |
-| 3 | Categoría | según el **último dígito** (tabla de abajo) | |
-| — | Audiencia para el prompt de IA | según la categoría | |
+| — | `NN` | los 2 últimos dígitos de mi cédula | `56` |
+| 1 | Nombre de la tabla | `tbl_productos_base_` + `NN` | `tbl_productos_base_56` |
+| 2 | Puerto | `81` + `NN` | `8156` |
+| 3 | Categoría | según el **último dígito** (tabla de abajo) | Flores |
+| — | Audiencia para el prompt de IA | según la categoría | floristerías premium |
 
 **Tabla de categorías:**
 
@@ -39,10 +37,6 @@ se busca en una tabla.
 
 > ✅ **Autocomprobación:** mi puerto empieza por `81` y termina con los mismos dos
 > dígitos que el nombre de mi tabla.
->
-> ⚠️ **La categoría no va en el nombre de la tabla.** La tabla es
-> `tbl_productos_base_` + mis dos dígitos. La categoría define los **productos que
-> siembro dentro** y la **audiencia del prompt de IA**.
 
 **Valores fijos, iguales para todo el curso:** base de datos `agrosmart_db`,
 **3 productos válidos** y **2 inválidos**.
@@ -57,8 +51,8 @@ se busca en una tabla.
 > haberlo entregado y C8 se califica en nivel 1.
 
 - **Enlace al video (5 min, cámara + pantalla):**
-- **Plataforma:**                  <!-- Drive institucional / OneDrive / YouTube no listado -->
-- **Acceso verificado en incógnito:**   ☐ Sí
+- **Plataforma:** <!-- Drive institucional / OneDrive / YouTube no listado -->
+- **Acceso verificado en incógnito:** ☐ Sí
 - **Duración real:**
 
 ---
@@ -69,4 +63,4 @@ Declaro que este repositorio es de mi autoría individual, que sustentaré oralm
 decisión de diseño que contiene, y que el historial de commits refleja fielmente el
 proceso de desarrollo que realicé.
 
-**Firma (nombre completo):**
+**Firma (nombre completo):** Katherine Elizabeth Vargas Medina
